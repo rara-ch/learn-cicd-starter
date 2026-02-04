@@ -13,7 +13,7 @@ var ErrLengthTooLongOrMissingApiKey = errors.New("malformed authorization header
 func GetAPIKey(headers http.Header) (string, error) {
 	authHeader := headers.Get("Authorization")
 	if authHeader == "" {
-		return "REMOVE THIS VALUE (On purpose break)", ErrNoAuthHeaderIncluded
+		return "", ErrNoAuthHeaderIncluded
 	}
 	splitAuth := strings.Split(authHeader, " ")
 	if len(splitAuth) < 2 || splitAuth[0] != "ApiKey" {
